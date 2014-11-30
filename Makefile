@@ -32,11 +32,11 @@ bluetooth_load: bluetooth_compile bluetooth_unload
 	cd btloader/ && sudo ./load_bt.sh
 
 uninstall:
-	sudo rm -r /usr/local/MT7630E
+	sudo rm -rf /usr/local/MT7630E
 	sudo update-rc.d load_wifi.sh remove
 	sudo update-rc.d load_bt.sh remove
-	sudo rm /etc/init.d/load_wifi.sh
-	sudo rm /etc/init.d/load_bt.sh
+	sudo rm -f /etc/init.d/load_wifi.sh
+	sudo rm -f /etc/init.d/load_bt.sh
 
 # Note : I'm not sure it's the best place to put this folder...
 install: compile
