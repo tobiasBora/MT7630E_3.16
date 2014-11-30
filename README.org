@@ -4,7 +4,7 @@
 
 The code has been modified by Tobias Bora in order to make it work under
 the Linux kernel 3.16. The original sources come from Mediatek at :
-http://www.mediatek.com/en/downloads/mt7630-pcie/
+http://www.mediatek.com/en/downloads/mt7630-pcie/.
 
 ** 1. Component
 
@@ -14,8 +14,8 @@ http://www.mediatek.com/en/downloads/mt7630-pcie/
 
 ** 2. User Environment
 
-- OS version: Ubuntu 14.10
-- Linux kernel version: 3.16 (Not tested under 3.13 and 3.14)
+- OS version: Tested under Ubuntu 14.04 and Ubuntu 14.10
+- Linux kernel version: 3.14 and 3.16 (Not tested on others kernels)
 
 ** 3. Use
 
