@@ -1,0 +1,7 @@
+*.ko
+*.o
+*.cmd
+*.mod.c
+rt2x00/.tmp_versions/*
+rt2x00/Module.symvers
+rt2x00/modules.order
