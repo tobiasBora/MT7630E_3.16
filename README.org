@@ -25,7 +25,7 @@ To just compile the library and copy the firmware in /lib/firmware, please run (
 To load and compile the driver (wifi and bluetooth) for the current session only, please run :
 :  make load
 
-To install the driver to load it every time you start your computer :
+To install the driver in order to load it every time you start your computer :
 :  make install
 
 And to uninstall it :
