@@ -5,3 +5,6 @@
 rt2x00/.tmp_versions/*
 rt2x00/Module.symvers
 rt2x00/modules.order
+btloader/.tmp_versions/
+btloader/Module.symvers
+btloader/modules.order
