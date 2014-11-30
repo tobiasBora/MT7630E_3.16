@@ -1,3 +1,4 @@
+#!/bin/bash
 rmmod eeprom;
 rmmod eeprom_93cx6;
 rmmod crc-ccitt;

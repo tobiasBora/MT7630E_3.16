@@ -1,3 +1,4 @@
+#!/bin/bash
 insmod /lib/modules/$(uname -r)/kernel/drivers/misc/eeprom/eeprom.ko
 insmod /lib/modules/$(uname -r)/kernel/drivers/misc/eeprom/eeprom_93cx6.ko
 insmod /lib/modules/$(uname -r)/kernel/lib/crc-ccitt.ko

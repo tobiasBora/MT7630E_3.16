@@ -1,48 +1,39 @@
 *******************************************************************************
             Mediatek MT7630E Combo Linux Driver User Guide
 *******************************************************************************
+
+0. Note
+
+The code has been modified by Tobias Bora in order to make it work under
+the Linux kernel 3.16. The original sources comes from Mediatek at :
+http://www.mediatek.com/en/downloads/mt7630-pcie/
+
 1. Component
 
 * rt2x00: Wi-Fi driver source code
 * btloader: Bluetooth firmware loader source code
-* firmware: Firmeare binary code (MT7650E234.bin is for Wi-Fi, mt76x0.bin is for Bluetooth)
+* firmware: Firmware binary code (MT7650E234.bin is for Wi-Fi, mt76x0.bin is for Bluetooth)
 
-2 .User Environment
+2. User Environment
 
-* OS version: Ubuntu 13.04 LTS
-* Linux kernel version: 3.13 and 3.14
+* OS version: Ubuntu 14.10
+* Linux kernel version: 3.16 (Not tested under 3.13 and 3.14)
 
-3.Installation
+3. Use
 
- Wi-Fi:
-  * Copy Wi-Fi firmware (MT7650E234.bin) to /lib/firmware
-  * Open Terminal and switch to root
-    sudo su
-  * Switch path to rt2x00 folder
-  * Compile the drivers to kernel object (.ko)
-  
-    make clean
-    make
-    
-  * Insert kernel object (.ko)
-  
-    ./load.sh
-    
-  
- Bluetooth
+To just compile the library and copy the firmware in /lib/firmware, please run :
+  make compile
 
-  * Copy Wi-Fi firmware (mt76x0.bin) to /lib/firmware
-  * Open Terminal and switch to root
-    sudo su
-  * Switch path to BTLoader folder
-  * Compile the drivers to kernel object (.ko)
-  
-    make clean
-    make
-    
-  * Insert kernel object (.ko)
-  
-    insmod ./mt76xx.ko
-    
+To load and compile the driver (wifi and bluetooth) for the current session only, please run :
+  make load
+
+To install the driver to load it every time you start your computer :
+  make install
+
+And to uninstall it :
+  make uninstall
+
+
+
   
   
