@@ -3,7 +3,7 @@
 ** 0. Note
 
 The code has been modified by Tobias Bora in order to make it work under
-the Linux kernel 3.16. The original sources comes from Mediatek at :
+the Linux kernel 3.16. The original sources come from Mediatek at :
 http://www.mediatek.com/en/downloads/mt7630-pcie/
 
 ** 1. Component
