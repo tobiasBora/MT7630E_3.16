@@ -450,15 +450,15 @@ loadfw_protect:
 			Loop++;
 		} while (Loop <= 20);
 
-		printk("%s: COM_REG0(0x%x) = 0x%x\n", __FUNCTION__, 0x0730, reg);
+		//printk("%s: COM_REG0(0x%x) = 0x%x\n", __FUNCTION__, 0x0730, reg);
 
 		if (reg != 0x1)
 		{
 			rt2x00mmio_register_read(rt2x00dev, 0x0700, &reg);
-			printk("%s: 0x0700 = 0x%x\n", __FUNCTION__, val);
+			//printk("%s: 0x0700 = 0x%x\n", __FUNCTION__, val);
 
 			rt2x00mmio_register_read(rt2x00dev, 0x0704, &reg);
-			printk("%s: 0x%x = 0x%x\n", __FUNCTION__, 0x0704, val);
+			//printk("%s: 0x%x = 0x%x\n", __FUNCTION__, 0x0704, val);
 		}
 		else
 			rt2x00dev->MCUCtrl.IsFWReady = TRUE;
@@ -591,7 +591,7 @@ static int rt2800pci_init_queues(struct rt2x00_dev *rt2x00dev)
 			rt2x00mmio_register_write(rt2x00dev, TX_RING_BASE + offset, entry_priv->desc_dma);
 			rt2x00mmio_register_write(rt2x00dev, TX_RING_CNT + offset, rt2x00dev->tx[i].limit);
 			rt2x00mmio_register_write(rt2x00dev, TX_RING_CIDX + offset, 0);
-			printk("-->TX_RING: Base=0x%x, Cnt=%d\n", entry_priv->desc_dma,rt2x00dev->tx[i].limit);
+			//printk("-->TX_RING: Base=0x%x, Cnt=%d\n", entry_priv->desc_dma,rt2x00dev->tx[i].limit);
 		}
 
 		offset = 4 * 0x10;
@@ -611,7 +611,7 @@ static int rt2800pci_init_queues(struct rt2x00_dev *rt2x00dev)
 
 		rt2x00mmio_register_write(rt2x00dev, RX_RING_CIDX + 0x10, rt2x00dev->rx[0].limit - 1);
 
-		printk("-->RX_RING: Base=0x%x, Cnt=%d\n", entry_priv->desc_dma,rt2x00dev->rx[0].limit);
+		//printk("-->RX_RING: Base=0x%x, Cnt=%d\n", entry_priv->desc_dma,rt2x00dev->rx[0].limit);
 
 
 		
@@ -745,7 +745,7 @@ static void rt2800pci_toggle_irq(struct rt2x00_dev *rt2x00dev,
 		RTMPEnableRxTx(rt2x00dev);
 
 		rt2x00mmio_register_read(rt2x00dev, 0x1300, &reg);  /* clear garbage interrupts*/
-		printk("0x1300 = %08x\n", reg);
+		//printk("0x1300 = %08x\n", reg);
 
 		printk("%s(1):Check if PDMA is idle!\n", __FUNCTION__);
 		AsicWaitPDMAIdle(rt2x00dev, 5, 10);
@@ -998,15 +998,15 @@ void MT_2800pci_hex_dump(char *str, unsigned char *pSrcBufVA, u32 SrcBufLen)
 	unsigned char *pt;
 	int x;
 	pt = pSrcBufVA;
-	printk("%s: %p, len = %d\n", str, pSrcBufVA, SrcBufLen);
-	for (x = 0; x < SrcBufLen; x++) {
-		if (x % 16 == 0)
-			printk("0x%04x : ", x);
-		printk("%02x ", ((unsigned char)pt[x]));
-		if (x % 16 == 15)
-			printk("\n");
-	}
-	printk("\n");
+	//printk("%s: %p, len = %d\n", str, pSrcBufVA, SrcBufLen);
+	/* for (x = 0; x < SrcBufLen; x++) { */
+	/* 	if (x % 16 == 0) */
+	/* 		//printk("0x%04x : ", x); */
+	/* 	//printk("%02x ", ((unsigned char)pt[x])); */
+	/* 	if (x % 16 == 15) */
+	/* 		//printk("\n"); */
+	/* } */
+	//printk("\n");
 }
 
 
@@ -1073,7 +1073,7 @@ static void rt2800pci_fill_rxdone(struct queue_entry *entry,
 					printk("crc RXD_W3_CIPHER_ERROR\n");
 
 				if (pRxInfo->Decrypted) {
-					printk("Decrypted\n");
+					//printk("Decrypted\n");
 					/*
 					 * Hardware has stripped IV/EIV data from 802.11 frame during
 					 * decryption. Unfortunately the descriptor doesn't contain
@@ -1259,7 +1259,7 @@ static bool rt2800pci_txdone_release_entries(struct queue_entry *entry,
                  if ((__is_kfifo_ptr(__tmp)))	\
 				 	printk("__is_kfifo_ptr(1)\n");	\
                  if (__ret) { \
-             			 printk("((typeof(__tmp->type))__kfifo->data)[%d]=0x%x\n",__kfifo->out & __tmp->kfifo.mask, ((typeof(__tmp->type))__kfifo->data)[__kfifo->out & __tmp->kfifo.mask]);	\				 	
+             			 //printk("((typeof(__tmp->type))__kfifo->data)[%d]=0x%x\n",__kfifo->out & __tmp->kfifo.mask, ((typeof(__tmp->type))__kfifo->data)[__kfifo->out & __tmp->kfifo.mask]);	\				 	
 				*(typeof(__tmp->type))__val = \	 	
                          (__is_kfifo_ptr(__tmp) ? \
                                 ((typeof(__tmp->type))__kfifo->data) : \
@@ -1280,7 +1280,7 @@ static bool rt2800pci_txdone(struct rt2x00_dev *rt2x00dev)
 	int max_tx_done = 16;
 	TX_STA_FIFO_STRUC	StaFifo;
 	while (kfifo_get(&rt2x00dev->txstatus_fifo, &status)) {
-		printk("rt2800pci_txdone status = 0x%x\n",status);
+		//printk("rt2800pci_txdone status = 0x%x\n",status);
 		StaFifo.word = status;
 		qid =  (UCHAR)StaFifo.field.PidType;//rt2x00_get_field32(status, TX_STA_FIFO_PID_QUEUE);
 			
@@ -1295,7 +1295,7 @@ static bool rt2800pci_txdone(struct rt2x00_dev *rt2x00dev)
 			break;
 		}
 
-		printk("rt2800pci_txdone qid = 0x%x\n",qid);
+		//printk("rt2800pci_txdone qid = 0x%x\n",qid);
 		queue = rt2x00queue_get_tx_queue(rt2x00dev, qid);
 		if (unlikely(queue == NULL)) {
 			/*
@@ -1537,7 +1537,7 @@ static void rt2800pci_txstatus_interrupt(struct rt2x00_dev *rt2x00dev)
 		}		
 #endif
 		Fifi_Status.field.PidType = (Fifi_Status_ext.field.TX_PKT_ID == 5)? 0:Fifi_Status_ext.field.TX_PKT_ID;
-		printk("0x%x (status)\n",Fifi_Status.word);
+		//printk("0x%x (status)\n",Fifi_Status.word);
 		status = Fifi_Status.word;
 
 		//woody_kfifo_put(&rt2x00dev->txstatus_fifo, &status);
@@ -1598,7 +1598,7 @@ static irqreturn_t rt2800pci_interrupt(int irq, void *dev_instance)
 			tasklet_schedule(&rt2x00dev->autowake_tasklet);
 #if 1
 		if (rt2x00_get_field32(reg, INT_SOURCE_CSR_7630_HCCA_DMA_DONE)) {
-			printk("==>INT_SOURCE_CSR_7630_HCCA_DMA_DONE\n");
+			//printk("==>INT_SOURCE_CSR_7630_HCCA_DMA_DONE\n");
 			tasklet_schedule(&rt2x00dev->tx8damdone_tasklet);
 			//return IRQ_HANDLED;
 		}
